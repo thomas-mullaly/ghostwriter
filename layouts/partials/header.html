@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html{{ if .Site.Params.opengraph }} prefix="og: http://ogp.me/ns#"{{ end }}>
+<html{{ if .Site.Params.opengraph }} prefix="og: http://ogp.me/ns#"{{ end }} lang="en-US">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -34,7 +34,7 @@
                                 <a title="{{ .Site.Title }}" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
                             </h1>
                         {{ end }}
-                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml"><i class="fa fa-rss"></i></a>
+                        <a class="button-square" href="{{ .Site.BaseURL }}index.xml" title="Subscribe to RSS feed"><i class="fa fa-rss"></i></a>
                         {{ with .Site.Params.twitter }}
                             <a class="button-square button-social hint--top" data-hint="Twitter" title="Twitter" href="{{ . }}">
                                 <i class="fa fa-twitter"></i>
