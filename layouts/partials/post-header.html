@@ -4,12 +4,20 @@
         <p class="post-description" itemprop="description">{{ .Description }}</p>
     {{ end }}
     <p class="post-date">
-        <span>Published <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time></span>
+        <span>Posted <time datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">{{ dateFormat (default "Mon, Jan 2, 2006" .Site.Params.dateFormat) .Date }}</time></span>
         <span>by</span>
         <span itemscope="" itemprop="author" itemtype="https://schema.org/Person">
             <span itemprop="name">
                 <a href="{{ .Site.Author.profile }}" itemprop="url" rel="author">{{ .Site.Author.name }}</a>
             </span>
         </span>
+        {{ if .Params.categories }}
+            <span>in</span>
+            {{ $len := len .Params.categories }}
+            {{ range $index, $category := .Params.categories }}
+                <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+                {{- if lt $index (sub $len 1) -}}, {{ end }}
+            {{ end }}
+        {{ end}}
     </p>
 </header>
